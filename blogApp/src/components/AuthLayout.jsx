@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSeleector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 // file ka name or function ka name different hosakta hai 
@@ -7,7 +7,8 @@ export default function Protected({ children, authentication = true }) {
 
     const navigate = useNavigate()
     const [loader, setLoader] = useState(true)
-    const authStatus = useSeleector(state => state.auth.status)
+    // *********
+    const authStatus = useSelector(state => state.auth?.status)
 
     useEffect(() => {
         if (authentication && authStatus !== authentication) {
